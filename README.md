@@ -1,6 +1,6 @@
 # netflix-movie-recommendation
 
-Project Proposal:
+## Project Proposal:
 
 Team members:
 Girija Ghali
@@ -8,7 +8,7 @@ Kevin McCurdy
 Manel Mahroug
 
 
-Objective:
+## Objective:
 
 Create a recommendation engine for movies using the publicly-available Netflix data. 
 The goal is to create movie recommendations to users based on the movies they rated highly.
@@ -17,15 +17,15 @@ The data were collected between October, 1998 and December, 2005 and reflect the
 To protect customer privacy, each customer id has been replaced with a randomly-assigned id.  The date of each rating and the title and year of release for each movie id are also provided.
 
 
-Methods:
+## Methods:
 
-Data cleaning and exploration:  
+## Data cleaning and exploration:  
 "	Jupyter notebook
 "	Pandas
 "	Matplotlib
 "	Seaborn
 
-Recommendation engine: 
+## Recommendation engine: 
         Machine learning libraries used:
 "	Fastai
 "	Scikit-surprise
