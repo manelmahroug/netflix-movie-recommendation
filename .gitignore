@@ -1,2 +1,4 @@
 netflix-data/*
 data.csv
+all_ratings.csv
+*/.ipynb_checkpoints
