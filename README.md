@@ -20,13 +20,13 @@ To protect customer privacy, each customer id has been replaced with a randomly-
 ## Methods:
 
 ## Data cleaning and exploration:  
-"	* Jupyter notebook
-"	* Pandas
-"	* Matplotlib
-"	* Seaborn
+ * Jupyter notebook
+ * Pandas
+ * Matplotlib
+ * Seaborn
 
 ## Recommendation engine: 
-        Machine learning libraries used:
-"	* Fastai
-"	* Scikit-surprise
+  Machine learning libraries used:
+ * Fastai
+ * Scikit-surprise
  
