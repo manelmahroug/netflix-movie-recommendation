@@ -1,7 +1,7 @@
 from pathlib import Path
 import os
 import pandas as pd
-import seaborn as sns
+#import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Unzip the data files into a directory
@@ -32,6 +32,8 @@ print("Files - {}".format(files))
 if not os.path.isfile('data.csv'):
 
      data = open('data.csv',mode='w')
+else:
+    print("'data.csv' already exists.")
 
 
 row = list()
@@ -39,15 +41,9 @@ row = list()
 
 for file in files:
 
-
     print("Reading ratings from {}..... ".format(file))
 
-
-    
-
-     
-
-with open(file, encoding= "ISO-8859-1") as f:
+    with open(file, encoding= "ISO-8859-1") as f:
 
 
         for i,line in enumerate(f):
