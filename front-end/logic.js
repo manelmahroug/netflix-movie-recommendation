@@ -1,11 +1,17 @@
 // replace movies array with real list of titles from csv
 var movies = ["Reservoir Dogs","Lord of the Rings","The Room","Jurassic Park","Jaws"];
+const numInputs = 5;
+
 d3.text("../movie_titles.csv",(e,r)=>{
+    if (e) console.log(e);
     var data = d3.csvParseRows(r)
     console.log(data[0]);
     movies = data.map(d=>d[2])
 
-    initForm(5);
+    for (var i=1; i<=numInputs; i++){
+        autocomplete(document.getElementById(`movieInput${i}`), movies);
+    }
+    
 })
 
 function formHtml(num){
@@ -23,10 +29,6 @@ function formHtml(num){
             <br>`
 }
 var $form = d3.select("#movieRatingsForm");
-
-function initForm(n){
-    for (var i=1; i<=n; i++){
-        $form.append("div").html(formHtml(i))
-        autocomplete(document.getElementById(`movieInput${i}`), movies);
-    }
+for (var i=1; i<=numInputs; i++){
+    $form.append("div").html(formHtml(i));
 }
