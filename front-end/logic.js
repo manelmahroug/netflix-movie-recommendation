@@ -32,3 +32,25 @@ var $form = d3.select("#movieRatingsForm");
 for (var i=1; i<=numInputs; i++){
     $form.append("div").html(formHtml(i));
 }
+var $responseText = d3.select("#textResponse");
+
+d3.select("#moviesSubmit").on("click",function(event){
+    d3.event.preventDefault();
+
+    titles = [];
+    for (var i=1; i<=numInputs; i++){
+        titles.push(d3.select(`#movieInput${i}`).node().value.trim());
+    }
+    console.log(titles);
+    dummyResponse($responseText, titles);
+})
+
+function dummyResponse($div, list){
+    arr = [];
+    list.forEach(d=>{arr.push(...d.split(" "))});
+    arr = arr.sort(d=>(Math.random()-0.5));
+    output = "";
+    arr.forEach(d=>{output += d + " "})
+    console.log(arr)
+    $div.text(`Based on your input, we think you'll like "${output}".`)
+}
