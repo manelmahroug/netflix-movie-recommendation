@@ -49,17 +49,20 @@ d3.select("#moviesSubmit").on("click",function(event){
     }
     console.log(titles);
     dummyResponse($responseText, titles, ratings);
+    // recommend($responseText, titles, ratings);
 })
 
-function dummyResponse($div, tList, rList){
-    arr = [];
-    tList.forEach(d=>{arr.push(...d.split(" "))});
-    // console.log(movieIndices[list[0]]);
-    arr = arr.sort(d=>(Math.random()-0.5));
-    output = "";
-    arr.forEach(d=>{output += d + " "})
-    // console.log(arr)
-    $div.text(`Based on your input, we think you'll like "${output}". Siskel and Ebert gave it ${d3.mean(rList)} thumbs up.`)
+function recommend($div, tList, rList){
+    // Assuming the Flask endpoint returns a JSON array of titles
+    d3.json(`/predict/${getEndPoint(tList,rList)}`,(e,d)=>{
+        if (e) console.warn(e);
+        console.log(d);
+        // Make into procedure that actually parses list
+        $div.text(`Based on your input, we recommend the movies:\n${d}`);
+    })
+}
+
+function getEndPoint(tList, rList){
     var endpoint = ""
     // console.log(tList.map((d,i)=>[movieIndices[d],rList[i]]));
     tList.forEach((d,i)=>{
@@ -70,6 +73,19 @@ function dummyResponse($div, tList, rList){
             console.log(`Didn't recognize movie "${d}"`);
         }
         endpoint+=`${mi}:${rList[i]},`;
-    });
-    console.log(`I'ma scrape some datums from '/predict/${endpoint}'!`);
+    })
+    return endpoint
+}
+
+function dummyResponse($div, tList, rList){
+    arr = [];
+    tList.forEach(d=>{arr.push(...d.split(" "))});
+    // console.log(movieIndices[list[0]]);
+    arr = arr.sort(d=>(Math.random()-0.5));
+    output = "";
+    arr.forEach(d=>{output += d + " "})
+    // console.log(arr)
+    $div.text(`Based on your input, we think you'll like "${output}". Siskel and Ebert gave it ${d3.mean(rList)} thumbs up.`)
+    
+    console.log(`I'ma scrape some datums from '/predict/${getEndPoint(tList,rList)}'!`);
 }
