@@ -61,10 +61,15 @@ function dummyResponse($div, tList, rList){
     // console.log(arr)
     $div.text(`Based on your input, we think you'll like "${output}". Siskel and Ebert gave it ${d3.mean(rList)} thumbs up.`)
     var endpoint = ""
-    console.log(tList.map((d,i)=>[movieIndices[d],rList[i]]));
+    // console.log(tList.map((d,i)=>[movieIndices[d],rList[i]]));
     tList.forEach((d,i)=>{
-        endpoint+=`${movieIndices[d]}:${rList[i]},`;
-        if (!movieIndices[d]) console.log(`Didn't recognize movie "${d}"`);
+        var mi = movieIndices[d];
+        // Currently this returns -1 for an unknown movie input. 
+        if (!mi) {
+            mi = -1;
+            console.log(`Didn't recognize movie "${d}"`);
+        }
+        endpoint+=`${mi}:${rList[i]},`;
     });
-    console.log(endpoint);
+    console.log(`I'ma scrape some datums from '/predict/${endpoint}'!`);
 }
