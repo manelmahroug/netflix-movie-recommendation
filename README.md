@@ -26,7 +26,7 @@ To protect customer privacy, each customer id has been replaced with a randomly-
  * Seaborn
 
 ## Recommendation engine: 
-  Machine learning libraries used:
- * Fastai
+  Machine learning library used:
+ 
  * Scikit-surprise
  
