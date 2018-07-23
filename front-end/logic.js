@@ -37,6 +37,7 @@ for (var i=1; i<=numInputs; i++){
     $form.append("div").html(formHtml(i));
 }
 var $responseText = d3.select("#textResponse");
+var $responseList = d3.select("#listResponse");
 
 d3.select("#moviesSubmit").on("click",function(event){
     d3.event.preventDefault();
@@ -49,17 +50,22 @@ d3.select("#moviesSubmit").on("click",function(event){
     }
     console.log(titles);
     dummyResponse($responseText, titles, ratings);
-    // recommend($responseText, titles, ratings);
+    // recommend($responseText, $responseList, titles, ratings);
 })
 
-function recommend($div, tList, rList){
+function recommend($div, $uldiv, tList, rList){
     // Assuming the Flask endpoint returns a JSON array of titles
     d3.json(`/predict/${getEndPoint(tList,rList)}`,(e,d)=>{
         if (e) console.warn(e);
         console.log(d);
         // Make into procedure that actually parses list
         $div.text(`Based on your input, we recommend the movies:\n${d}`);
+        recList($uldiv, d);
     })
+}
+
+function recList($div, mList){
+    $div.html("").selectAll("ul").data(mList).enter().append("ul").text(d=>d);
 }
 
 function getEndPoint(tList, rList){
