@@ -55,11 +55,12 @@ d3.select("#moviesSubmit").on("click",function(event){
 
 function recommend($div, $uldiv, tList, rList){
     console.log(`'/predict/${getEndPoint(tList,rList)}'`)
+    $div.text(`Calculating movies...`);
     // Assuming the Flask endpoint returns a JSON array of titles
     d3.json(`/predict/${getEndPoint(tList,rList)}`,(e,d)=>{
         if (e) console.warn(e);
         console.log(d);
-        // Make into procedure that actually parses list
+        
         $div.text(`Based on your input, we recommend the movies:`);
         recList($uldiv, d);
     })

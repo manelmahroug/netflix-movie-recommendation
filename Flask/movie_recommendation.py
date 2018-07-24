@@ -1,5 +1,5 @@
 import pandas as pd
-import seaborn as sns
+# import seaborn as sns
 import numpy as np
 import csv
 from surprise import Reader, Dataset, SVD, evaluate,accuracy,dump
@@ -129,9 +129,9 @@ def PC_Prediction(user):
                                  'rating': [0 for _ in range(len(new_list))]
                              })
     user_all_movie_DF = pd.concat([user,add_movie])
-
+    print("Preparing to load model...")
     _, svd = dump.load('svd_model_M')
-    
+    print("Loaded model")
     user_dat = Dataset.load_from_df(user_all_movie_DF[['user_id', 'movie_id', 'rating']], reader)
     user_dateset = user_dat.build_full_trainset().build_testset()
     predictions = svd.test(user_dateset)
