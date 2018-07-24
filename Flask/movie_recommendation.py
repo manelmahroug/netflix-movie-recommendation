@@ -114,7 +114,8 @@ def PC_Prediction(user):
     
     userID = 9999999
     user['user_id'] = userID
-    all_movieids_list = pd.read_csv('movie_ids.csv')['movie_id'] 
+    #all_movieids_list = pd.read_csv('movie_ids.csv')['movie_id'] 
+    all_movieids_list = [i for i in range (1,17771)]
     movies_list = user.movie_id
     
     

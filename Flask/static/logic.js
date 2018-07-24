@@ -60,7 +60,7 @@ function recommend($div, $uldiv, tList, rList){
         if (e) console.warn(e);
         console.log(d);
         // Make into procedure that actually parses list
-        $div.text(`Based on your input, we recommend the movies:\n${d}`);
+        $div.text(`Based on your input, we recommend the movies:`);
         recList($uldiv, d);
     })
 }

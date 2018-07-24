@@ -23,10 +23,10 @@ def ratingsHandler():
 @app.route("/predict/<string>")
 def get_movies(string):
     user_df = string_to_df(string)
-    
-    print(mr.PC_Prediction(user_df))
+    output_df=mr.PC_Prediction(user_df)
+    print(output_df)
 
-    return str(list(user_df.iloc[:,0])) #dummy return for now
+    return str(list(output_df.iloc[:,0])) #dummy return for now
     #
     # Do whatever ML stuff with the df here
     # 
