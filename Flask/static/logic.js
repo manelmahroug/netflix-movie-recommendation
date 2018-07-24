@@ -49,11 +49,12 @@ d3.select("#moviesSubmit").on("click",function(event){
         ratings.push(+d3.select(`#rating${i}`).node().value);
     }
     console.log(titles);
-    dummyResponse($responseText, titles, ratings);
-    // recommend($responseText, $responseList, titles, ratings);
+    // dummyResponse($responseText, titles, ratings);
+    recommend($responseText, $responseList, titles, ratings);
 })
 
 function recommend($div, $uldiv, tList, rList){
+    console.log(`'/predict/${getEndPoint(tList,rList)}'`)
     // Assuming the Flask endpoint returns a JSON array of titles
     d3.json(`/predict/${getEndPoint(tList,rList)}`,(e,d)=>{
         if (e) console.warn(e);
@@ -65,6 +66,7 @@ function recommend($div, $uldiv, tList, rList){
 }
 
 function recList($div, mList){
+    console.log($div.attr("id"))
     $div.html("").selectAll("ul").data(mList).enter().append("ul").text(d=>d);
 }
 
