@@ -140,7 +140,8 @@ def PC_Prediction(user):
     print(len(user_all_movie_DF))
     user_all_movie_DF = user_all_movie_DF[~user_all_movie_DF['movie_id'].isin(movies_list)]
     print(len(user_all_movie_DF))
-    user_recommentation_DF = user_all_movie_DF.sort_values('rating',ascending = False).head(10)
+    # print(user_all_movie_DF['Predictions'].value_counts())
+    user_recommentation_DF = user_all_movie_DF.sort_values('Predictions',ascending = False).head(10)
     return(user_recommentation_DF)
 
 

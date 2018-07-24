@@ -1,3 +1,19 @@
+body {
+    background: linear-gradient(#e7e6e2,#e2dabb);
+    height: 100vh;
+}
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+.divider{
+    width: 100vw;
+    height: 20px;
+    background: #222121;
+    /* background: #6e6868; */
+    background-image: url("film strip1.svg");
+    background-size: contain;
+}
 .autocomplete {
     /*the container must be positioned relative:*/
     position: relative;
