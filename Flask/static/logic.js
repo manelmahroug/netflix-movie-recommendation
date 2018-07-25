@@ -68,7 +68,7 @@ function recommend($div, $uldiv, tList, rList){
 
 function recList($div, mList){
     // console.log($div.attr("id"))
-    $div.html("").selectAll("ul").data(mList).enter().append("ul").text(d=>movies[d-1]);
+    $div.html("").append("ul").selectAll("li").data(mList).enter().append("li").text(d=>movies[d-1]);
 }
 
 function getEndPoint(tList, rList){
