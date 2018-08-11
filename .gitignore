@@ -6,3 +6,4 @@ all_ratings.csv
 */svd_model_M
 */__pycache__/*
 ~$*
+tests/images
