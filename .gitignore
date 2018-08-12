@@ -7,3 +7,4 @@ all_ratings.csv
 */__pycache__/*
 ~$*
 tests/images
+Thumbs.db
