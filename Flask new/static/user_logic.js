@@ -30,7 +30,7 @@ d3.select("#userSubmit").on("click",function(event){
 })
 
 function getUID(text){
-    return text.split(" ")[-1]
+    return text.split(" ").pop()
 }
 
 function recList($div, mList){
