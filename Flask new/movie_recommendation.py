@@ -109,10 +109,10 @@ def PC_TrainFull(all_ratings_DF):
     svd.train(trainset)
     dump.dump('ratings_CF_SVD_main', algo=svd)
 '''
-def PC_Prediction(user):
+def PC_Prediction(user, userID=9999999):
     reader = Reader()
     
-    userID = 9999999
+    # userID = 9999999
     user['user_id'] = userID
     #all_movieids_list = pd.read_csv('movie_ids.csv')['movie_id'] 
     all_movieids_list = [i for i in range (1,17771)]

@@ -30,10 +30,11 @@ def old_users():
 @app.route("/user/<uid>")
 def get_user_movies(uid):
     ### I think this is close to what we want?
+    user_df = string_to_df("1:5,3:2,234:4,12:4,5353:1", user_ID=uid)
     # user_df = ??
-    # output_df=mr.PC_Prediction(user_df)
-    # return str(list(output_df.iloc[:,0]))
-    return str([1,20,34,23])
+    output_df=mr.PC_Prediction(user_df)
+    return str(list(output_df.iloc[:,0]))
+    # return str([1,20,34,23])
 
 @app.route("/predict/<string>")
 def get_movies(string):
@@ -45,11 +46,11 @@ def string_to_input_list(string):
     li = [[int(x) for x in string.split(",")[:5][i].split(":")] for i in range(5)]
     return li
 
-def string_to_df(string,columns=["movie_id","rating"],insert_user=True):
+def string_to_df(string,columns=["movie_id","rating"],insert_user=True,user_ID=0):
     li = [[int(x) for x in string.split(",")[:5][i].split(":")] for i in range(5)]
     df = pd.DataFrame(li, columns=columns)
     if insert_user:
-        df.insert(1, "user_id", 0)
+        df.insert(1, "user_id", user_ID)
     return df
     
 if __name__ == "__main__":

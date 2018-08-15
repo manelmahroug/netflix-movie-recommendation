@@ -17,6 +17,7 @@ var $responseList = d3.select("#listResponse");
 d3.select("#userSubmit").on("click",function(event){
     d3.event.preventDefault();
 
+    $responseText.text(`Calculating movies...`);
     user = d3.select("#userSelect").node().value.trim()
     console.log(user)
 
