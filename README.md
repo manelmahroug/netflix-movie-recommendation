@@ -1,5 +1,8 @@
 # netflix-movie-recommendation
 
+**Deployed app:** https://movie-recommendation-ucb.herokuapp.com/ 
+<br>(demo version, due to file storage and processing constraints)
+
 ## Project Proposal:
 
 ## Team members:
